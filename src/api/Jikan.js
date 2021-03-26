@@ -1,12 +1,6 @@
-import axios from 'axios';
-
 export const getTopAnimes = {
   method: 'GET',
-  url: 'https://jikan1.p.rapidapi.com/top/anime/1/airing',
-  headers: {
-    'x-rapidapi-key': '502042fca9msh062024085d9db5ap1544b8jsndb25aca5db96',
-    'x-rapidapi-host': 'jikan1.p.rapidapi.com',
-  },
+  url: 'https://api.jikan.moe/v3/top/anime/1/airing',
 };
 export const getSingleAnime = (id) => {
   return {
