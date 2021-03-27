@@ -10,7 +10,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <div className="container">
+      <div className="">
         <Router>
           <AnimeList path="/" />
           <InfoPage path="/:category/:id" />

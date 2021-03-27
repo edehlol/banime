@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchInfo } from './infoSlice';
 import { AnimeInfo } from './AnimeInfo';
 import { MangaInfo } from './MangaInfo';
+import { PersonInfo } from './PersonInfo';
 
 export const InfoPage = ({ category, id }) => {
   const subject = useSelector((state) => state.info.data);
@@ -21,6 +22,8 @@ export const InfoPage = ({ category, id }) => {
       content = <AnimeInfo anime={subject} />;
     } else if (category === 'manga') {
       content = <MangaInfo manga={subject} />;
+    } else if (category === 'person') {
+      content = <PersonInfo person={subject} />;
     } else {
       content = <div>what?</div>;
     }
