@@ -7,15 +7,20 @@ const initialState = {
   results: null,
 };
 
-export const fetchResults = createAsyncThunk('search/fetchResults', async (query) => {
-  const response = await axios.request(getSearchResults(query));
+export const fetchResults = createAsyncThunk('search/fetchResults', async ({ category, query }) => {
+  const response = await axios.request(getSearchResults(category, query));
   return response.data;
 });
 
 const searchSlice = createSlice({
   name: 'search',
   initialState,
-  reducers: {},
+  reducers: {
+    clearResults(state) {
+      state.status = 'idle';
+      state.results = null;
+    },
+  },
   extraReducers: {
     [fetchResults.pending]: (state) => {
       state.status = 'pending';
@@ -26,5 +31,7 @@ const searchSlice = createSlice({
     },
   },
 });
+
+export const { clearResults } = searchSlice.actions;
 
 export default searchSlice.reducer;

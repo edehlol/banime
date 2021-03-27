@@ -8,10 +8,16 @@ export const getSingleAnime = (id) => {
     url: `https://api.jikan.moe/v3/anime/${id}`,
   };
 };
-export const getSearchResults = (query) => {
+export const getInfo = (category, id) => {
   return {
     method: 'GET',
-    url: `https://api.jikan.moe/v3/search/anime?q=${query}&page=1`,
+    url: `https://api.jikan.moe/v3/${category}/${id}`,
+  };
+};
+export const getSearchResults = (type, query) => {
+  return {
+    method: 'GET',
+    url: `https://api.jikan.moe/v3/search/${type}?q=${query}&page=1`,
   };
 };
 

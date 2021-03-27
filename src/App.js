@@ -2,10 +2,9 @@ import React from 'react';
 import { Router } from '@reach/router';
 
 import { AnimeList } from './features/topAnimeList/AnimeList';
-import { SingleAnimePage } from './features/topAnimeList/SingleAnimePage';
 import { Navbar } from './app/Navbar';
-import { Anime } from './features/anime/Anime';
 import { ResultsList } from './features/search/ResultsList';
+import { InfoPage } from './features/info/InfoPage';
 
 const App = () => {
   return (
@@ -14,8 +13,8 @@ const App = () => {
       <div className="container">
         <Router>
           <AnimeList path="/" />
-          <Anime path="/anime/:animeId" />
-          <ResultsList path="search/:query" />
+          <InfoPage path="/:category/:id" />
+          <ResultsList path="search/:category/:query" />
         </Router>
       </div>
     </>
