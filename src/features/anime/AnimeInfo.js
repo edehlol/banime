@@ -1,6 +1,6 @@
 import { Link as ReachLink } from '@reach/router';
 import { Image } from '@chakra-ui/image';
-import { Box, Tab, TabList, TabPanels, Tabs, TabPanel } from '@chakra-ui/react';
+import { Box, Tab, TabList, TabPanels, Tabs, TabPanel, chakra } from '@chakra-ui/react';
 import {
   AspectRatio,
   Center,
@@ -14,6 +14,7 @@ import {
 import { Link } from '../common/Link';
 import { format, parseISO } from 'date-fns';
 import React from 'react';
+import { InfoText } from '../common/InfoText';
 
 export const AnimeInfo = ({ anime }) => {
   const renderLinks = (array, type) => {
@@ -40,32 +41,22 @@ export const AnimeInfo = ({ anime }) => {
         </Box>
       </Flex>
       <Box fontSize="sm" fontWeight="medium">
-        <Text mb="2">
-          Type: <Link to={`/top/${anime.type}`}>{anime.type}</Link>
-        </Text>
-        <Divider mb="2" />
-        <Text mb="2">Episodes: {anime.episodes}</Text>
-        <Divider mb="2" />
-        <Text mb="2">Status: {anime.status ? anime.status : '-'}</Text>
-        <Divider mb="2" />
-        <Text mb="2">
-          Aired: {format(parseISO(anime.aired.from), 'dd/MM/yyyy')} to{' '}
+        <InfoText name={'Type'}>
+          <Link to={`/top/${anime.type}`}>{anime.type}</Link>
+        </InfoText>
+        <InfoText name={'Episodes'}>{anime.episodes}</InfoText>
+        <InfoText name="Status">{anime.status ? anime.status : '-'}</InfoText>
+        <InfoText name="Aired">
+          {format(parseISO(anime.aired.from), 'dd/MM/yyyy')} to{' '}
           {anime.aired.to ? format(parseISO(anime.aired.to), 'dd/MM/yyyy') : 'Now'}
-        </Text>
-        <Divider mb="2" />
-        <Text mb="2">Producers: {renderLinks(anime.producers, 'producer')}</Text>
-        <Divider mb="2" />
-        <Text mb="2">Licensors: {renderLinks(anime.licensors, 'producer')}</Text>
-        <Divider mb="2" />
-        <Text mb="2">Studios: {renderLinks(anime.studios, 'producer')}</Text>
-        <Divider mb="2" />
-        <Text mb="2">Source: {anime.source ? anime.source : '-'}</Text>
-        <Divider mb="2" />
-        <Text mb="2">Genres: {renderLinks(anime.genres, 'genres')}</Text>
-        <Divider mb="2" />
-        <Text mb="2">Duration: {anime.duration ? anime.duration : '-'}</Text>
-        <Divider mb="2" />
-        <Text mb="2">Rating: {anime.rating ? anime.rating : '-'}</Text>
+        </InfoText>
+        <InfoText name="Producers">{renderLinks(anime.producers, 'producer')}</InfoText>
+        <InfoText name="Licensors">{renderLinks(anime.licensors, 'producer')}</InfoText>
+        <InfoText name="Studios">{renderLinks(anime.studios, 'producer')}</InfoText>
+        <InfoText name="Source">{anime.source ? anime.source : '-'}</InfoText>
+        <InfoText name="Genres">{renderLinks(anime.genres, 'genres')}</InfoText>
+        <InfoText name="Duration">{anime.duration ? anime.duration : '-'}</InfoText>
+        <InfoText name="Rating">{anime.rating ? anime.rating : '-'}</InfoText>
       </Box>
     </Box>
   );

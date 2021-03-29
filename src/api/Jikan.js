@@ -8,6 +8,18 @@ export const getAnime = (id) => {
     url: `https://api.jikan.moe/v3/anime/${id}`,
   };
 };
+export const getVideos = (id) => {
+  return {
+    method: 'GET',
+    url: `https://api.jikan.moe/v3/anime/${id}/videos`,
+  };
+};
+export const getEpisodes = (id) => {
+  return {
+    method: 'GET',
+    url: `https://api.jikan.moe/v3/anime/${id}/episodes/1`,
+  };
+};
 
 export const getInfo = (category, id) => {
   return {
@@ -15,12 +27,7 @@ export const getInfo = (category, id) => {
     url: `https://api.jikan.moe/v3/${category}/${id}`,
   };
 };
-export const getVideos = (id) => {
-  return {
-    method: 'GET',
-    url: `https://api.jikan.moe/v3/anime/${id}/videos`,
-  };
-};
+
 export const getSearchResults = (type, query) => {
   return {
     method: 'GET',
