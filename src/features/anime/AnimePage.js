@@ -15,14 +15,14 @@ import { Box, Tab, TabList, TabPanels, Tabs, TabPanel } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { Link as ReachLink } from '@reach/router';
 import { RelatedAnimeTitles } from './RelatedAnimeTitles';
-import { useDispatch } from 'react-redux';
-import { fetchVideos } from './infoSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAnime, fetchVideos } from './animeSlice';
+import { Videos } from './Videos';
 
-export const AnimeInfo = ({ anime }) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchVideos(anime.mal_id));
-  }, [anime.mal_id, dispatch]);
+export const AnimePage = ({ anime }) => {
+  console.log(anime);
+  // const dispatch = useDispatch();
+
   return (
     <>
       <Container maxW="container.lg">
@@ -73,10 +73,19 @@ export const AnimeInfo = ({ anime }) => {
                   {anime.studios[0] ? anime.studios[0].name : ''}
                 </Link>
               </p>
-              <Tabs>
-                <TabList>
+              <Tabs isLazy>
+                <TabList overflowX="scroll" pb="4">
                   <Tab>Details</Tab>
                   <Tab>Videos</Tab>
+                  <Tab>Episodes</Tab>
+                  <Tab>Reviews</Tab>
+                  <Tab>Recommendations</Tab>
+                  <Tab>Stats</Tab>
+                  <Tab>News</Tab>
+                  <Tab>Forum</Tab>
+                  <Tab>Featured</Tab>
+                  <Tab>Clubs</Tab>
+                  <Tab>Pictures</Tab>
                 </TabList>
 
                 <TabPanels>
@@ -87,17 +96,7 @@ export const AnimeInfo = ({ anime }) => {
                     <p>{anime.synopsis}</p>
                   </TabPanel>
                   <TabPanel>
-                    <Heading size="md" mb="4">
-                      Trailer
-                    </Heading>
-                    <AspectRatio ratio={16 / 9}>
-                      <iframe
-                        src={anime.trailer_url}
-                        title="Trailer"
-                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                      ></iframe>
-                    </AspectRatio>
+                    <Videos animeId={anime.mal_id} />
                   </TabPanel>
                 </TabPanels>
               </Tabs>
