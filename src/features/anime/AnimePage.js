@@ -18,6 +18,7 @@ import { RelatedAnimeTitles } from './RelatedAnimeTitles';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAnime, fetchVideos } from './animeSlice';
 import { VideoList } from './VideoList';
+import { EpisodeList } from './EpisodeList';
 
 export const AnimePage = ({ anime }) => {
   console.log(anime);
@@ -97,6 +98,9 @@ export const AnimePage = ({ anime }) => {
                   </TabPanel>
                   <TabPanel>
                     <VideoList animeId={anime.mal_id} />
+                  </TabPanel>
+                  <TabPanel>
+                    <EpisodeList animeId={anime.mal_id} />
                   </TabPanel>
                 </TabPanels>
               </Tabs>

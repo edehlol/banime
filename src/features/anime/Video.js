@@ -1,7 +1,7 @@
 import { AspectRatio, Box, Heading } from '@chakra-ui/layout';
 import React from 'react';
 
-export const Video = ({ video }) => {
+export const Video = ({ video, children }) => {
   return (
     <Box mb="8">
       <Heading size="sm" mb="4">
