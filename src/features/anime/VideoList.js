@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchVideos } from './animeSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import { Image } from '@chakra-ui/image';
+import { Video } from './Video';
 
 export const VideoList = ({ animeId }) => {
   const videos = useSelector((state) => state.anime.videos);
@@ -49,22 +50,7 @@ export const VideoList = ({ animeId }) => {
               </Box>
             );
           } else {
-            return (
-              <Box mb="8">
-                <Heading size="sm" mb="4">
-                  {video.title}
-                </Heading>
-                <AspectRatio ratio={16 / 9}>
-                  <iframe
-                    src={video.video_url}
-                    loading="lazy"
-                    title={video.title}
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </AspectRatio>
-              </Box>
-            );
+            return <Video video={video} />;
           }
         });
         list = (
