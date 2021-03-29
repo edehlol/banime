@@ -15,8 +15,10 @@ export const VideoList = ({ animeId }) => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchVideos(animeId));
-  }, [dispatch, animeId]);
+    if (fetchVideosStatus === 'idle') {
+      dispatch(fetchVideos(animeId));
+    }
+  }, [dispatch, animeId, fetchVideosStatus]);
 
   const renderPromos = () => {
     if (videos.promo.length > 0) {

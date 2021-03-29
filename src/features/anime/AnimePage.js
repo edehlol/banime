@@ -24,7 +24,6 @@ import { AnimeInfo } from './AnimeInfo';
 
 export const AnimePage = ({ anime }) => {
   console.log(anime);
-  // const dispatch = useDispatch();
 
   return (
     <>
