@@ -1,3 +1,7 @@
+import { Button } from '@chakra-ui/button';
+import { Input, InputGroup, InputRightAddon } from '@chakra-ui/input';
+import { Flex } from '@chakra-ui/layout';
+import { Select } from '@chakra-ui/select';
 import { navigate } from '@reach/router';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -10,8 +14,8 @@ export const Searchbar = () => {
   const onSearchChange = (e) => {
     setSearchInput(e.target.value);
   };
-  const onSearchCategoryChange = (category) => {
-    setSearchCategory(category);
+  const onSearchCategoryChange = (e) => {
+    setSearchCategory(e.target.value);
   };
   const onSearchSubmit = (e) => {
     e.preventDefault();
@@ -22,34 +26,31 @@ export const Searchbar = () => {
     }
   };
   return (
-    <form className="input-group" onSubmit={onSearchSubmit}>
-      <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-        {searchCategory}
-      </button>
-      <ul className="dropdown-menu">
-        <li className="dropdown-item" onClick={() => onSearchCategoryChange('Anime')}>
-          Anime
-        </li>
-        <li className="dropdown-item" onClick={() => onSearchCategoryChange('Manga')}>
-          Manga
-        </li>
-        <li className="dropdown-item" onClick={() => onSearchCategoryChange('Person')}>
-          Person
-        </li>
-        <li className="dropdown-item" onClick={() => onSearchCategoryChange('Character')}>
-          Character
-        </li>
-      </ul>
-      <input
+    <form onSubmit={onSearchSubmit}>
+      <Flex>
+        <Select onChange={onSearchCategoryChange}>
+          <option value="anime">Anime</option>
+          <option value="manga">Manga</option>
+          <option value="person">Person</option>
+          <option value="character">Character</option>
+        </Select>
+        <Input
+          value={searchInput}
+          onChange={onSearchChange}
+          placeholder="Search Anime, Manga, and more... "
+        />
+      </Flex>
+
+      {/* <input
         value={searchInput}
         onChange={onSearchChange}
         type="text"
         className="form-control"
         placeholder="Search Anime, Manga, and more... "
-      />
-      <button type="submit" className="btn btn-secondary">
+      /> */}
+      {/* <button type="submit" className="btn btn-secondary">
         <i className="bi bi-search"></i>
-      </button>
+      </button> */}
     </form>
   );
 };

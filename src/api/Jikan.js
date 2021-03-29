@@ -2,16 +2,23 @@ export const getTopAnimes = {
   method: 'GET',
   url: 'https://api.jikan.moe/v3/top/anime/1/airing',
 };
-export const getSingleAnime = (id) => {
+export const getAnime = (id) => {
   return {
     method: 'GET',
     url: `https://api.jikan.moe/v3/anime/${id}`,
   };
 };
+
 export const getInfo = (category, id) => {
   return {
     method: 'GET',
     url: `https://api.jikan.moe/v3/${category}/${id}`,
+  };
+};
+export const getVideos = (id) => {
+  return {
+    method: 'GET',
+    url: `https://api.jikan.moe/v3/anime/${id}/videos`,
   };
 };
 export const getSearchResults = (type, query) => {
