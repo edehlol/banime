@@ -17,7 +17,7 @@ import { Link as ReachLink } from '@reach/router';
 import { RelatedAnimeTitles } from './RelatedAnimeTitles';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAnime, fetchVideos } from './animeSlice';
-import { Videos } from './Videos';
+import { VideoList } from './VideoList';
 
 export const AnimePage = ({ anime }) => {
   console.log(anime);
@@ -96,7 +96,7 @@ export const AnimePage = ({ anime }) => {
                     <p>{anime.synopsis}</p>
                   </TabPanel>
                   <TabPanel>
-                    <Videos animeId={anime.mal_id} />
+                    <VideoList animeId={anime.mal_id} />
                   </TabPanel>
                 </TabPanels>
               </Tabs>

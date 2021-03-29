@@ -5,7 +5,7 @@ import { fetchVideos } from './animeSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import { Image } from '@chakra-ui/image';
 
-export const Videos = ({ animeId }) => {
+export const VideoList = ({ animeId }) => {
   const videos = useSelector((state) => state.anime.videos);
   const fetchVideosStatus = useSelector((state) => state.anime.fetchVideosStatus);
 
