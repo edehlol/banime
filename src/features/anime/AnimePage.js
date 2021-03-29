@@ -19,6 +19,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAnime, fetchVideos } from './animeSlice';
 import { VideoList } from './VideoList';
 import { EpisodeList } from './EpisodeList';
+import { format, parseISO } from 'date-fns';
+import { AnimeInfo } from './AnimeInfo';
 
 export const AnimePage = ({ anime }) => {
   console.log(anime);
@@ -28,41 +30,7 @@ export const AnimePage = ({ anime }) => {
     <>
       <Container maxW="container.lg">
         <Flex direction={['column', 'row']}>
-          <Box w={['100%', '25%']}>
-            <Image src={anime.image_url} alt={anime.title} borderRadius="lg" />
-            <Flex align="center">
-              <Text fontSize="4xl" mr="1">
-                {anime.score}
-              </Text>
-              <Box fontWeight="semibold" fontSize="xs">
-                <Text>#{anime.popularity}</Text>
-                <Text>by {anime.members} users</Text>
-              </Box>
-            </Flex>
-            <Box fontSize="sm" fontWeight="medium">
-              <Text>Type: {anime.type}</Text>
-              <Divider />
-              <Text>Episodes: {anime.episodes}</Text>
-              <Divider />
-              <Text>Status: {anime.status ? anime.status : '-'}</Text>
-              <Divider />
-              <Text>Aired: </Text>
-              <Divider />
-              <Text>Producers: </Text>
-              <Divider />
-              <Text>Licensors: </Text>
-              <Divider />
-              <Text>Studios: </Text>
-              <Divider />
-              <Text>Source: {anime.source ? anime.source : '-'}</Text>
-              <Divider />
-              <Text>Genres: </Text>
-              <Divider />
-              <Text>Duration: {anime.duration ? anime.duration : '-'}</Text>
-              <Divider />
-              <Text>Rating: {anime.rating ? anime.rating : '-'}</Text>
-            </Box>
-          </Box>
+          <AnimeInfo anime={anime} />
           <Spacer />
           <Box w={['100%', '70%']}>
             <Box>
