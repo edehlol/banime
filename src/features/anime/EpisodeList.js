@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchEpisodes } from './animeSlice';
 import { format, parseISO } from 'date-fns';
+import { nanoid } from '@reduxjs/toolkit';
 
 export const EpisodeList = ({ animeId }) => {
   const fetchEpisodesStatus = useSelector((state) => state.anime.fetchEpisodesStatus);
@@ -18,9 +19,8 @@ export const EpisodeList = ({ animeId }) => {
   if (fetchEpisodesStatus === 'pending') {
     content = <div>loading</div>;
   } else if (fetchEpisodesStatus === 'fulfilled') {
-    console.log(format(parseISO(episodes[0].aired), 'dd/MM/yyyy'));
     const renderedEpisodes = episodes.map((episode) => (
-      <Tr>
+      <Tr key={nanoid()}>
         <Td>{episode.episode_id}</Td>
         <Td>{episode.title}</Td>
         <Td>{format(parseISO(episodes[0].aired), 'dd/MM/yyyy')}</Td>

@@ -29,8 +29,8 @@ export const AnimeInfo = ({ anime }) => {
   };
 
   return (
-    <Box w={['100%', '25%']}>
-      <Image src={anime.image_url} alt={anime.title} borderRadius="lg" />
+    <Box w={['100%', '25%']} pt="2">
+      <Image src={anime.image_url} alt={anime.title} borderRadius="lg" mb="2" />
       <Flex align="center">
         <Text fontSize="4xl" mr="1">
           {anime.score}

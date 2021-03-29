@@ -28,13 +28,14 @@ export const Searchbar = () => {
   return (
     <form onSubmit={onSearchSubmit}>
       <Flex>
-        <Select onChange={onSearchCategoryChange}>
+        <Select onChange={onSearchCategoryChange} bg="white" w="48">
           <option value="anime">Anime</option>
           <option value="manga">Manga</option>
           <option value="person">Person</option>
           <option value="character">Character</option>
         </Select>
         <Input
+          bg="white"
           value={searchInput}
           onChange={onSearchChange}
           placeholder="Search Anime, Manga, and more... "
