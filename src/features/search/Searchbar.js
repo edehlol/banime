@@ -1,4 +1,5 @@
-import { Button } from '@chakra-ui/button';
+import { Button, IconButton } from '@chakra-ui/button';
+import { SearchIcon } from '@chakra-ui/icons';
 import { Input, InputGroup, InputRightAddon } from '@chakra-ui/input';
 import { Flex } from '@chakra-ui/layout';
 import { Select } from '@chakra-ui/select';
@@ -28,18 +29,22 @@ export const Searchbar = () => {
   return (
     <form onSubmit={onSearchSubmit}>
       <Flex>
-        <Select onChange={onSearchCategoryChange} bg="white" w="48">
+        {/* <Select onChange={onSearchCategoryChange} bg="white" w="48">
           <option value="anime">Anime</option>
           <option value="manga">Manga</option>
           <option value="person">Person</option>
           <option value="character">Character</option>
-        </Select>
-        <Input
-          bg="white"
-          value={searchInput}
-          onChange={onSearchChange}
-          placeholder="Search Anime, Manga, and more... "
-        />
+        </Select> */}
+        <InputGroup>
+          {' '}
+          <Input
+            bg="white"
+            value={searchInput}
+            onChange={onSearchChange}
+            placeholder="Search Anime, Manga, and more... "
+          />
+          <InputRightAddon as={IconButton} icon={<SearchIcon />} />
+        </InputGroup>
       </Flex>
 
       {/* <input
