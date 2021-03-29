@@ -5,7 +5,8 @@ import { fetchVideos } from './animeSlice';
 import { nanoid } from '@reduxjs/toolkit';
 import { Image } from '@chakra-ui/image';
 import { Video } from './Video';
-import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { ExternalLinkIcon, InfoIcon } from '@chakra-ui/icons';
+import { Tooltip } from '@chakra-ui/tooltip';
 
 export const VideoList = ({ animeId }) => {
   const videos = useSelector((state) => state.anime.videos);
@@ -83,8 +84,8 @@ export const VideoList = ({ animeId }) => {
   const renderEpisodeLinks = () => {
     if (videos.episodes.length > 0) {
       let episodes = videos.episodes.map((episode) => (
-        <ListItem>
-          <Link isExternal href={episode.url} target="_blank">
+        <ListItem mb="2" key={nanoid()}>
+          <Link isExternal={true} href={episode.url}>
             {episode.title} - {episode.episode}
             <ExternalLinkIcon mx="2" />
           </Link>
@@ -93,7 +94,13 @@ export const VideoList = ({ animeId }) => {
       return (
         <>
           <Heading size="md" mb="4">
-            Episodes
+            Episodes &nbsp;
+            <Tooltip
+              size="sm"
+              label="These episodes are hosted on MyAnimeList and require a premium subscription to watch."
+            >
+              <InfoIcon boxSize="4" />
+            </Tooltip>
           </Heading>
           <List>{episodes}</List>
         </>
