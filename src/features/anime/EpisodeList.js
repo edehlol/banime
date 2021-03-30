@@ -35,10 +35,12 @@ export const EpisodeList = ({ animeId }) => {
     content = (
       <Table>
         <Thead>
-          <Th>#</Th>
-          <Th>Episode Title</Th>
-          <Th>Aired</Th>
-          <Th>Discussion</Th>
+          <Tr>
+            <Th>#</Th>
+            <Th>Episode Title</Th>
+            <Th>Aired</Th>
+            <Th>Discussion</Th>
+          </Tr>
         </Thead>
         <Tbody>{renderedEpisodes}</Tbody>
       </Table>

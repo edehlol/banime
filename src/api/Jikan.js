@@ -1,6 +1,6 @@
 export const getTopAnimes = {
   method: 'GET',
-  url: 'https://api.jikan.moe/v3/top/anime/1/airing',
+  url: 'https://api.jikan.moe/v3/top/anime/1',
 };
 export const getAnime = (id) => {
   return {

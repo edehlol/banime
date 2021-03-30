@@ -1,4 +1,5 @@
 import { Box, Flex, Heading, Spacer } from '@chakra-ui/layout';
+import { Menu, MenuItem, MenuList } from '@chakra-ui/menu';
 import { Link } from '@reach/router';
 
 import React from 'react';
@@ -10,7 +11,12 @@ export const Navbar = () => {
       <Heading as={Link} to="/" color="white" size="lg">
         Banime.
       </Heading>
-
+      <Menu>
+        <MenuList>
+          <MenuItem>Anime</MenuItem>
+          <MenuItem>Manga</MenuItem>
+        </MenuList>
+      </Menu>
       <Spacer />
       <Searchbar />
     </Flex>

@@ -15,15 +15,16 @@ import { Link } from '../common/Link';
 import { format, parseISO } from 'date-fns';
 import React from 'react';
 import { InfoText } from '../common/InfoText';
+import { nanoid } from '@reduxjs/toolkit';
 
 export const AnimeInfo = ({ anime }) => {
   const renderLinks = (array, type) => {
     if (array.length > 0) {
       return array.map((item, index) => (
-        <>
+        <React.Fragment key={nanoid()}>
           <Link to={`/anime/${type}/${item.mal_id}`}>{item.name}</Link>
           {index === array.length - 1 ? '' : ', '}
-        </>
+        </React.Fragment>
       ));
     }
   };
