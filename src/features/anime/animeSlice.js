@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getAnime, getVideos, getEpisodes } from '../../api/Jikan';
+import { getAnime, getVideos, getEpisodes, getReviews } from '../../api/Jikan';
 import axios from 'axios';
 
 const initialState = {
@@ -10,6 +10,7 @@ const initialState = {
   fetchEpisodesStatus: 'idle',
   videos: null,
   episodes: null,
+  reviews: null,
 };
 
 export const fetchAnime = createAsyncThunk('info/fetchInfo', async (id) => {
@@ -23,6 +24,11 @@ export const fetchVideos = createAsyncThunk('info/fetchVideos', async (id) => {
 export const fetchEpisodes = createAsyncThunk('info/fetchEpisodes', async (id) => {
   const response = await axios.request(getEpisodes(id));
   return response.data.episodes;
+});
+export const fetchReviews = createAsyncThunk('info/fetchReviews', async ({ type, id, page }) => {
+  console.log(id, type, page);
+  const res = await axios.request(getReviews(type, id, page));
+  return res.data;
 });
 
 const animeSlice = createSlice({
@@ -54,6 +60,9 @@ const animeSlice = createSlice({
     [fetchEpisodes.fulfilled]: (state, action) => {
       state.fetchEpisodesStatus = 'fulfilled';
       state.episodes = action.payload;
+    },
+    [fetchReviews.fulfilled]: (state, action) => {
+      state.reviews = action.payload;
     },
   },
 });

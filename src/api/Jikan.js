@@ -20,6 +20,12 @@ export const getEpisodes = (id) => {
     url: `https://api.jikan.moe/v3/anime/${id}/episodes/1`,
   };
 };
+export const getReviews = (type, id, page) => {
+  return {
+    method: 'GET',
+    url: `https://api.jikan.moe/v3/${type}/${id}/reviews/${page}`,
+  };
+};
 
 export const getInfo = (category, id) => {
   return {
